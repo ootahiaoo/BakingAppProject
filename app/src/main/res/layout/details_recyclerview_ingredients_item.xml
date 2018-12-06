@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/smallest_padding"
+    android:orientation="vertical"
+    android:paddingLeft="@dimen/small_padding">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/textview_quantity"
+            style="@style/DetailsRecyclerViewStyle"
+            android:paddingRight="@dimen/smallest_padding"
+            tools:text="@string/tool_quantity" />
+
+        <TextView
+            android:id="@+id/textview_measure"
+            style="@style/DetailsRecyclerViewStyle"
+            tools:text="@string/tool_measure" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/textview_ingredient_name"
+        style="@style/DetailsRecyclerViewStyle"
+        tools:text="@string/tool_ingredient_name" />
+
+</LinearLayout>

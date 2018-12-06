@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary"> #d62929</color>
+    <color name="colorPrimaryDark">#c12525</color>
+    <color name="colorAccent">#ffc107</color>
+    <color name="textColor">#706666</color>
+    <color name="exoPlayerBackground">#CC000000</color>
+    <color name="exoPlayerTextColor">#FFBEBEBE</color>
+    <color name="widgetBackgroundColor">#ffffff</color>
+</resources>

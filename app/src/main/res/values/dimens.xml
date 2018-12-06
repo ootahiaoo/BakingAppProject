@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Paddings & Margins dimensions-->
+    <dimen name="smallest_padding">4dp</dimen>
+    <dimen name="small_padding">8dp</dimen>
+    <dimen name="middle_padding">12dp</dimen>
+    <dimen name="big_padding">20dp</dimen>
+
+    <!-- Text sizes -->
+    <dimen name="smallest_text_size">8sp</dimen>
+    <dimen name="small_text_size">12sp</dimen>
+    <dimen name="middle_text_size">14sp</dimen>
+    <dimen name="bigger_text_size">16sp</dimen>
+    <dimen name="biggest_text_size">18sp</dimen>
+
+    <!-- Other dimensions -->
+    <dimen name="widget_margin">8dp</dimen>
+    <dimen name="exoplayer_progressbar">32dp</dimen>
+
+</resources>

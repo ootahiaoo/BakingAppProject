@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name">BakingAppProject</string>
+    <string name="main_activity_name">Baking Time</string>
+
+    <!-- Strings for the menu -->
+    <string name="drawer_home">Home</string>
+    <string name="drawer_save">Save recipe</string>
+
+    <!-- Error message displayed when there is no internet connectivity [CHAR LIMIT=NONE] -->
+    <string name="no_internet_connection">No internet connection.</string>
+    <string name="appwidget_text">EXAMPLE</string>
+    <string name="add_widget">Add widget</string>
+
+    <!-- Message displayed in Widget when there is no recipe saved [CHAR LIMIT=NONE] -->
+    <string name="widget_empty_view">No recipe saved.</string>
+
+    <!-- Strings for titles -->
+    <string name="title_ingredients">Ingredients</string>
+    <string name="title_directions">Directions</string>
+
+    <!-- Strings for testing (XML tools) -->
+    <string name="tool_recipe_title">Recipe title</string>
+    <string name="tool_quantity">Quantity</string>
+    <string name="tool_measure">Measure</string>
+    <string name="tool_ingredient_name">Ingredient name</string>
+    <string name="tool_direction_short_description">Short description</string>
+    <string name="tool_direction_long_description">Long description of the recipe</string>
+    <string name="tool_widget_text">Ingredient name (Quantity Measure)</string>
+    <string name="tool_empty_view">Empty view</string>
+</resources>

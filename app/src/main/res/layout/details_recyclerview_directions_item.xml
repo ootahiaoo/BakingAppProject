@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/smallest_padding"
+    android:orientation="vertical"
+    android:paddingLeft="@dimen/small_padding">
+
+    <TextView
+        android:id="@+id/textview_short_description"
+        style="@style/DetailsRecyclerViewStyle"
+        android:layout_margin="@dimen/small_padding"
+        tools:text="@string/tool_direction_short_description" />
+</LinearLayout>
