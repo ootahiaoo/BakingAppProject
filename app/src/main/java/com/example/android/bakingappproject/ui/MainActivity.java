@@ -1,8 +1,9 @@
 package com.example.android.bakingappproject.ui;
 
 import android.content.Intent;
-import android.content.res.Configuration;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.annotation.VisibleForTesting;
@@ -17,7 +18,7 @@ import android.widget.TextView;
 
 import com.example.android.bakingappproject.IdlingResource.SimpleIdlingResource;
 import com.example.android.bakingappproject.R;
-import com.example.android.bakingappproject.data.database.RecipeEntry;
+import com.example.android.bakingappproject.data.model.RecipeEntry;
 import com.example.android.bakingappproject.data.network.NetworkUtils;
 import com.example.android.bakingappproject.data.network.RecipeService;
 import com.example.android.bakingappproject.data.network.RetrofitClientInstance;

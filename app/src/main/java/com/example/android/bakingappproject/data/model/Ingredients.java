@@ -1,23 +1,13 @@
-package com.example.android.bakingappproject.data.database;
+package com.example.android.bakingappproject.data.model;
 
-import android.arch.persistence.room.Entity;
-import android.arch.persistence.room.ForeignKey;
-import android.arch.persistence.room.Ignore;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-//@Entity(foreignKeys = {@ForeignKey(
-//        entity = RecipeEntry.class,
-//        parentColumns = "recipe_id",
-//        childColumns = "recipe_entry_id")
-//})
 public class Ingredients implements Parcelable {
 
     private String quantity;
     private String measure;
     private String ingredient;
-
-    private int recipe_entry_id;
 
     public Ingredients(String quantity, String measure, String ingredient) {
         this.quantity = quantity;
@@ -25,7 +15,6 @@ public class Ingredients implements Parcelable {
         this.ingredient = ingredient;
     }
 
-//    @Ignore
     private Ingredients(Parcel in) {
         quantity = in.readString();
         measure = in.readString();

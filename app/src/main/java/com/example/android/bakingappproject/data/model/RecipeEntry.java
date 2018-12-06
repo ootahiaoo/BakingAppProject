@@ -1,41 +1,24 @@
-package com.example.android.bakingappproject.data.database;
+package com.example.android.bakingappproject.data.model;
 
-import android.arch.persistence.room.ColumnInfo;
-import android.arch.persistence.room.Entity;
-import android.arch.persistence.room.ForeignKey;
-import android.arch.persistence.room.Ignore;
-import android.arch.persistence.room.PrimaryKey;
-import com.google.gson.annotations.SerializedName;
 import android.os.Parcel;
 import android.os.Parcelable;
+import com.google.gson.annotations.SerializedName;
 import java.util.List;
 
-//@Entity(tableName = "recipe")
 public class RecipeEntry implements Parcelable {
 
-//    @PrimaryKey
-//    @ColumnInfo(name = "recipe_id")
     @SerializedName("id")
     private int recipeId;
 
-//    @ColumnInfo(name = "recipe_name")
     @SerializedName("name")
     private String recipeName;
 
-//    @Ignore
     @SerializedName("ingredients")
     private List<Ingredients> recipeIngredients;
 
-//    @Ignore
     @SerializedName("steps")
     private List<Steps> recipeSteps;
 
-//    public RecipeEntry(int recipeId, String recipeName) {
-//        this.recipeId = recipeId;
-//        this.recipeName = recipeName;
-//    }
-
-//    @Ignore
     public RecipeEntry(int recipeId, String recipeName, List<Ingredients> recipeIngredients,
                        List<Steps> recipeSteps) {
         this.recipeId = recipeId;
@@ -44,7 +27,6 @@ public class RecipeEntry implements Parcelable {
         this.recipeSteps = recipeSteps;
     }
 
-//    @Ignore
     private RecipeEntry(Parcel in) {
         recipeId = in.readInt();
         recipeName = in.readString();
@@ -67,7 +49,6 @@ public class RecipeEntry implements Parcelable {
     public int getRecipeId() {
         return recipeId;
     }
-
     public void setRecipeId(int recipeId) {
         this.recipeId = recipeId;
     }
@@ -75,7 +56,6 @@ public class RecipeEntry implements Parcelable {
     public String getRecipeName() {
         return recipeName;
     }
-
     public void setRecipeName(String recipeName) {
         this.recipeName = recipeName;
     }
@@ -83,7 +63,6 @@ public class RecipeEntry implements Parcelable {
     public List<Ingredients> getRecipeIngredients() {
         return recipeIngredients;
     }
-
     public void setRecipeIngredients(List<Ingredients> recipeIngredients) {
         this.recipeIngredients = recipeIngredients;
     }
@@ -91,7 +70,6 @@ public class RecipeEntry implements Parcelable {
     public List<Steps> getRecipeSteps() {
         return recipeSteps;
     }
-
     public void setRecipeSteps(List<Steps> recipeSteps) {
         this.recipeSteps = recipeSteps;
     }

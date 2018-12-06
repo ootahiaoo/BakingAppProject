@@ -11,8 +11,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.android.bakingappproject.R;
-import com.example.android.bakingappproject.data.database.Ingredients;
-import com.example.android.bakingappproject.data.database.Steps;
+import com.example.android.bakingappproject.data.model.Ingredients;
+import com.example.android.bakingappproject.data.model.Steps;
 import com.example.android.bakingappproject.ui.RecipeDetailsActivity;
 
 import java.util.List;

@@ -1,4 +1,4 @@
-package com.example.android.bakingappproject.data.database;
+package com.example.android.bakingappproject.data.model;
 
 import android.arch.persistence.room.Ignore;
 import android.os.Parcel;

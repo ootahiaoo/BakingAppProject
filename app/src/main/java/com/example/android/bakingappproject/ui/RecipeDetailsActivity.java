@@ -9,9 +9,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.example.android.bakingappproject.R;
-import com.example.android.bakingappproject.data.database.Ingredients;
-import com.example.android.bakingappproject.data.database.RecipeEntry;
-import com.example.android.bakingappproject.data.database.Steps;
+import com.example.android.bakingappproject.data.model.Ingredients;
+import com.example.android.bakingappproject.data.model.RecipeEntry;
+import com.example.android.bakingappproject.data.model.Steps;
 import com.example.android.bakingappproject.ui.fragments.RecipeStepDetailsFragment;
 import com.example.android.bakingappproject.ui.fragments.RecipeStepFragment;
 import com.example.android.bakingappproject.ui.widget.WidgetService;
@@ -27,62 +27,71 @@ public class RecipeDetailsActivity extends AppCompatActivity implements RecipeSt
 
     private RecipeEntry recipeEntry;
     private List<Ingredients> ingredientsList;
+    private List<Steps> recipeSteps;
+    private Steps currentSteps;
     private boolean mTwoPane;
     private String stepFragmentTag;
+    private RecipeStepFragment stepFragment;
+    private RecipeStepDetailsFragment stepDetailsFragment;
+    private FragmentManager fragmentManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_details);
+        if (findViewById(R.id.fragment_linear_layout) != null) {mTwoPane = true;}
 
-        Bundle bundle = getIntent().getExtras();
-        if (bundle != null) {
-            recipeEntry = bundle.getParcelable(KEY_RECIPE_ITEM);
+        if (savedInstanceState != null) {
+            recipeEntry = savedInstanceState.getParcelable(KEY_RECIPE_ITEM);
+        } else {
+            Bundle bundle = getIntent().getExtras();
+            if (bundle != null) {
+                recipeEntry = bundle.getParcelable(KEY_RECIPE_ITEM);
+            }
         }
         String recipeName = recipeEntry.getRecipeName();
         ingredientsList = recipeEntry.getRecipeIngredients();
-        List<Steps> recipeSteps = recipeEntry.getRecipeSteps();
+        recipeSteps = recipeEntry.getRecipeSteps();
 
         ActionBar actionBar = getSupportActionBar();
         actionBar.setTitle(recipeName);
         actionBar.setHomeAsUpIndicator(R.drawable.ic_menu);
         actionBar.setDisplayHomeAsUpEnabled(true);
 
-        RecipeStepFragment stepFragment = (RecipeStepFragment) getSupportFragmentManager()
-                .findFragmentById(R.id.master_list_fragment);
+        fragmentManager = getSupportFragmentManager();
+
+        stepFragment = (RecipeStepFragment) getSupportFragmentManager().findFragmentById(R.id
+                .master_list_fragment);
         stepFragmentTag = stepFragment.getTag();
         stepFragment.setIngredientsList(ingredientsList);
         stepFragment.setDirectionsList(recipeSteps);
 
-        if (findViewById(R.id.fragment_linear_layout) != null) {
-            mTwoPane = true;
-            FragmentManager fragmentManager = getSupportFragmentManager();
-            RecipeStepDetailsFragment stepDetailsFragment = RecipeStepDetailsFragment.newInstance
-                    (recipeSteps.get(0));
+        if (mTwoPane) {
+            stepDetailsFragment = RecipeStepDetailsFragment.newInstance(recipeSteps.get(0));
             fragmentManager.beginTransaction().add(R.id.step_details_container,
                     stepDetailsFragment).commit();
-
-        } else {
-            mTwoPane = false;
         }
     }
 
 
     public void onStepSelected(Steps currentStep) {
+        currentSteps = currentStep;
+        stepDetailsFragment = RecipeStepDetailsFragment.newInstance(currentStep);
         if (mTwoPane) {
-            FragmentManager fragmentManager = getSupportFragmentManager();
-            RecipeStepDetailsFragment stepDetailsFragment = RecipeStepDetailsFragment.newInstance
-                    (currentStep);
             fragmentManager.beginTransaction().replace(R.id.step_details_container,
                     stepDetailsFragment).commit();
         } else {
-            FragmentManager fragmentManager = getSupportFragmentManager();
-            RecipeStepDetailsFragment stepDetailsFragment = RecipeStepDetailsFragment.newInstance
-                    (currentStep);
             fragmentManager.beginTransaction().replace(R.id.master_list_fragment,
                     stepDetailsFragment).addToBackStack(stepFragmentTag).commit();
         }
     }
+
+    @Override
+    public void onSaveInstanceState(Bundle currentState) {
+        currentState.putParcelable(KEY_RECIPE_ITEM, recipeEntry);
+        super.onSaveInstanceState(currentState);
+    }
+
 
     @Override
     public void onBackPressed() {

@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.android.bakingappproject.R;
-import com.example.android.bakingappproject.data.database.RecipeEntry;
+import com.example.android.bakingappproject.data.model.RecipeEntry;
 
 import java.util.List;
 

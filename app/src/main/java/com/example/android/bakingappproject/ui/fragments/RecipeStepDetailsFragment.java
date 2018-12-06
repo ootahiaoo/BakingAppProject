@@ -1,19 +1,23 @@
 package com.example.android.bakingappproject.ui.fragments;
 
-
+import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Parcelable;
+import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.support.v4.media.session.MediaSessionCompat;
 import android.support.v4.media.session.PlaybackStateCompat;
+import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.android.bakingappproject.R;
-import com.example.android.bakingappproject.data.database.Steps;
+import com.example.android.bakingappproject.data.model.Steps;
 import com.google.android.exoplayer2.DefaultLoadControl;
 import com.google.android.exoplayer2.ExoPlaybackException;
 import com.google.android.exoplayer2.ExoPlayer;
@@ -52,6 +56,7 @@ public class RecipeStepDetailsFragment extends Fragment implements ExoPlayer.Eve
     private static MediaSessionCompat mMediaSession;
     private PlaybackStateCompat.Builder mStateBuilder;
     private long mCurrentPosition = 0;
+    private boolean isTablet;
 
     public RecipeStepDetailsFragment() {
     }
@@ -64,13 +69,11 @@ public class RecipeStepDetailsFragment extends Fragment implements ExoPlayer.Eve
         return stepDetailsFragment;
     }
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle
             savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_details_step, container, false);
         ButterKnife.bind(this, rootView);
-
 
         if (savedInstanceState != null) {
             currentStep = savedInstanceState.getParcelable(KEY_CURRENT_STEP);
@@ -78,12 +81,25 @@ public class RecipeStepDetailsFragment extends Fragment implements ExoPlayer.Eve
         } else {
             currentStep = getArguments().getParcelable(KEY_CURRENT_STEP);
         }
-        descriptionTextView.setText(currentStep.getStepDescription());
 
+        if (getResources().getConfiguration().smallestScreenWidthDp >= 600) {isTablet = true;}
+
+        // If device is mobile on landscape mode, the video takes the full screen
+        if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE
+                && !isTablet) {
+            descriptionTextView.setVisibility(View.GONE);
+            ((AppCompatActivity) getActivity()).getSupportActionBar().hide();
+            getActivity().getWindow().getDecorView().setSystemUiVisibility(View
+                    .SYSTEM_UI_FLAG_FULLSCREEN | View.SYSTEM_UI_FLAG_IMMERSIVE);
+        } else {
+            descriptionTextView.setText(currentStep.getStepDescription());
+            ((AppCompatActivity) getActivity()).getSupportActionBar().show();
+            getActivity().getWindow().getDecorView().setSystemUiVisibility(View
+                    .SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
+        }
         initializeMediaSession();
 
         String currentStepVideoUrl = currentStep.getStepVideoUrl();
-
         if (currentStepVideoUrl != null || !currentStepVideoUrl.isEmpty()) {
             Uri videoUri = Uri.parse(currentStepVideoUrl);
             initializePlayer(videoUri);
