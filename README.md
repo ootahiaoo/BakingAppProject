@@ -14,6 +14,23 @@ The design follows the [sample mock](https://go.udacity.com/android-baking-app-m
 * Responsive design (Master Detail Flow/Multi-pane layout using Fragments).
 * UI Testing using Espresso.
 
+<p align="center">
+<img src="https://raw.githubusercontent.com/ootahiaoo/BakingAppProject/master/screenshot/Screenshot_1.png" width="200" title="Main View">
+  
+<img src="https://raw.githubusercontent.com/ootahiaoo/BakingAppProject/master/screenshot/Screenshot_2.png" width="200" title="Recipe Details View- Ingredients & Steps">
+  
+<img src="https://raw.githubusercontent.com/ootahiaoo/BakingAppProject/master/screenshot/Screenshot_3.png" width="200" title="Recipe Details View - Step details">
+  
+<img src="https://raw.githubusercontent.com/ootahiaoo/BakingAppProject/master/screenshot/Screenshot_4.png" width="200" title="Home Widget">
+</p>
+
+<p align="center">
+<img src="https://raw.githubusercontent.com/ootahiaoo/BakingAppProject/master/screenshot/Screenshot_5.png" width="400" title="Tablet Main View">
+  
+<img src="https://raw.githubusercontent.com/ootahiaoo/BakingAppProject/master/screenshot/Screenshot_6.png" width="400" title="Tablet Recipe Details view">
+  
+</p>
+
 ## License
 _To be added._
 
